@@ -70,7 +70,7 @@ class Iopooleco extends utils.Adapter {
 			await this.setObjectNotExistsAsync(poolid + '.latestMeasure.mode', { type: 'state', common: { name: poolid + '.latestMeasure.mode', type: 'string', read: true, write: false, role: 'value', desc: '' }, native: {} });
 			await this.setObjectNotExistsAsync(poolid + '.latestMeasure.isValid', { type: 'state', common: { name: poolid + '.latestMeasure.isValid', type: 'boolean', read: true, write: false, role: 'value', desc: '' }, native: {} });
 			await this.setObjectNotExistsAsync(poolid + '.latestMeasure.measuredAt', { type: 'state', common: { name: poolid + '.latestMeasure.measuredAt', type: 'string', read: true, write: false, role: 'value', desc: '' }, native: {} });
-			await this.setObjectNotExistsAsync(poolid + '.advice.filtrationDuration', { type: 'state', common: { name: poolid + '.advice.filtrationDuration', type: 'string', read: true, write: false, role: 'value', desc: '' }, native: {} });
+			await this.setObjectNotExistsAsync(poolid + '.advice.filtrationDuration', { type: 'state', common: { name: poolid + '.advice.filtrationDuration', type: 'number', read: true, write: false, role: 'value', desc: '' }, native: {} });
 		} else {
 			this.log.debug(`already exists pooldevice: ${poolid}`);
 		}
