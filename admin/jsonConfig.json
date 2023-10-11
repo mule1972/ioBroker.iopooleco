@@ -1,0 +1,13 @@
+{
+    "i18n": true,
+    "type": "panel",
+    "items": {
+      "apikey": {
+        "type": "text",
+        "label": "API-Key",
+        "help": "API Key from iopool App",
+        "sm": 12,
+        "md": 4
+      }
+   }
+}

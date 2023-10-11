@@ -1,0 +1,113 @@
+{
+    "common": {
+        "name": "iopooleco",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "uk": "Початкова версія",
+                "zh-cn": "首次出版"
+            }
+        },
+        "title": "iopool-ECO",
+        "titleLang": {
+            "en": "iopool-ECO",
+            "de": "iopool-ECO",
+            "ru": "iopool-ECO",
+            "pt": "iopool-ECO",
+            "nl": "iopool-ECO",
+            "fr": "iopool-ECO",
+            "it": "iopool-ECO",
+            "es": "iopool-ECO",
+            "pl": "iopool-ECO",
+            "uk": "iopool-ECO",
+            "zh-cn": "iopool-ECO"
+        },
+        "desc": {
+            "en": "connect to pool meter ECO from iopool",
+            "de": "Verbinden mit dem Poolmessgerät ECO von iopool",
+            "ru": "подключиться к счетчику бассейна ECO от iopool",
+            "pt": "conectar ao medidor de piscina ECO do iopool",
+            "nl": "verbinding maken met zwembadmeter ECO van iopool",
+            "fr": "se connecter au compteur de piscine ECO de iopool",
+            "it": "connettersi al misuratore della piscina ECO da iopool",
+            "es": "conectar al medidor de piscina ECO de iopool",
+            "pl": "połącz się z licznikiem basenowym ECO firmy iopool",
+            "uk": "підключитися до басейнометра ECO з iopool",
+            "zh-cn": "从 iopool 连接到池表 ECO"
+        },
+        "authors": [
+            "Mule <c.noack@arcor.de>"
+        ],
+        "keywords": [
+            "pool",
+            "whirlpool",
+            "meter",
+            "water"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "iopooleco.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/mule1972/ioBroker.iopooleco/main/admin/iopooleco.png",
+        "readme": "https://github.com/mule1972/ioBroker.iopooleco/blob/main/README.md",
+        "loglevel": "info",
+        "mode": "schedule",
+        "schedule": "*/1 * * * *",
+        "allowInit": true,
+        "type": "metering",
+        "compact": true,
+        "connectionType": "cloud",
+        "dataSource": "poll",
+        "adminUI": {
+            "config": "json"
+        },
+        "eraseOnUpload": true,
+        "dependencies": [
+            {
+                "js-controller": ">=3.3.22"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=5.0.0"
+            }
+        ]
+    },
+    "native": {
+        "apikey": ""
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "Device or service connected",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
+}
