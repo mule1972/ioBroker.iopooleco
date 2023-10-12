@@ -14,9 +14,13 @@
 connect to pool meter ECO from iopool
 
 ## Changelog
-0.0.1 (2023-10-12)
+<!--
+	Placeholder for the next version (at the beginning of the line):
+	### **WORK IN PROGRESS**
+-->
 
-    (Mule) Initial test release
+### **WORK IN PROGRESS**
+* (Mule) initial release
 
 
 ## License
