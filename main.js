@@ -60,7 +60,7 @@ class Iopooleco extends utils.Adapter {
 			}
 			this.log.info(`end iopooleco API request`);
 		} else {
-			this.log.info(`API-Key has to be set in the instance settings before usage`);
+			this.log.error(`API-Key has to be set in the instance settings before usage`);
 		}
 		this.terminate(0);
 	}
