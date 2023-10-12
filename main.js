@@ -1,7 +1,7 @@
 'use strict';
 
 const utils = require('@iobroker/adapter-core');
-const axios = require('axios').default;
+const axios = require('axios');
 
 class Iopooleco extends utils.Adapter {
 	/**
