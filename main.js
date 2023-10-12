@@ -21,43 +21,47 @@ class Iopooleco extends utils.Adapter {
 	}
 
 	async onReady() {
-		this.log.info(`start iopooleco API request`);
-		this.log.debug(`API-Key: ${this.config.apikey}`);
-		this.iopoolAPIClient = axios.create({
-			baseURL: 'https://api.iopool.com/v1/pools',
-			timeout: 1000,
-			responseType: 'json',
-			responseEncoding: 'utf8',
-			headers: {'x-api-key': `${this.config.apikey}`}
-		});
-		try {
-			const PoolsResponse = await this.iopoolAPIClient.get('/');
-			//connection to API established
-			this.setState('info.connection',true,true);
-			this.log.debug(`API-Response: ${JSON.stringify(PoolsResponse.status)}: ${JSON.stringify(PoolsResponse.data)}`);
-			let poolcounter = 0;
-			for (const id of PoolsResponse.data) {
-				await this.CreatePoolIDNotExists(id.id);
-				//only update if measuredAt changed
-				const obj = await this.getStateAsync(id.id+'.latestMeasure.measuredAt');
-				if (obj != null) {
-					if (obj.val != PoolsResponse.data[poolcounter].latestMeasure.measuredAt) {
-						this.log.info(`new measurement => update states`);
-						await this.UpdatePoolID(PoolsResponse.data[poolcounter]);
+		if(this.config.apikey) {
+			this.log.info(`start iopooleco API request`);
+			this.log.debug(`API-Key: ${this.config.apikey}`);
+			this.iopoolAPIClient = axios.create({
+				baseURL: 'https://api.iopool.com/v1/pools',
+				timeout: 1000,
+				responseType: 'json',
+				responseEncoding: 'utf8',
+				headers: {'x-api-key': `${this.config.apikey}`}
+			});
+			try {
+				const PoolsResponse = await this.iopoolAPIClient.get('/');
+				//connection to API established
+				this.setState('info.connection',true,true);
+				this.log.debug(`API-Response: ${JSON.stringify(PoolsResponse.status)}: ${JSON.stringify(PoolsResponse.data)}`);
+				let poolcounter = 0;
+				for (const id of PoolsResponse.data) {
+					await this.CreatePoolIDNotExists(id.id);
+					//only update if measuredAt changed
+					const obj = await this.getStateAsync(id.id+'.latestMeasure.measuredAt');
+					if (obj != null) {
+						if (obj.val != PoolsResponse.data[poolcounter].latestMeasure.measuredAt) {
+							this.log.info(`new measurement => update states`);
+							await this.UpdatePoolID(PoolsResponse.data[poolcounter]);
+						} else {
+							this.log.info(`no new measurement from API`);
+						}
 					} else {
-						this.log.info(`no new measurement from API`);
+						this.log.error(`could not get last measurement timestamp: ${id.id+'.latestMeasure.measuredAt'}`);
 					}
-				} else {
-					this.log.error(`could not get last measurement timestamp: ${id.id+'.latestMeasure.measuredAt'}`);
+					poolcounter++;
 				}
-				poolcounter++;
+			} catch (err) {
+				//connection to API lost
+				this.setState('info.connection',false,true);
+				this.log.error('connection error to iopool-API: '+err);
 			}
-		} catch (err) {
-			//connection to API lost
-			this.setState('info.connection',false,true);
-			this.log.error('connection error to iopool-API: '+err);
+			this.log.info(`end iopooleco API request`);
+		} else {
+			this.log.info(`API-Key has to be set in the instance settings before usage`);
 		}
-		this.log.info(`end iopooleco API request`);
 		this.terminate(0);
 	}
 
