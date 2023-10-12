@@ -11,17 +11,10 @@
 **Tests:** ![Test and Release](https://github.com/mule1972/ioBroker.iopooleco/workflows/Test%20and%20Release/badge.svg)
 
 ## iopooleco adapter for ioBroker
-
 connect to pool meter ECO from iopool
 
 ## Changelog
-<!--
-	Placeholder for the next version (at the beginning of the line):
-	### **WORK IN PROGRESS**
--->
-
-### **WORK IN PROGRESS**
-* (Mule) initial release
+0.0.1 initial developer release
 
 ## License
 MIT License
