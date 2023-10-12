@@ -22,6 +22,9 @@ connect to pool meter ECO from iopool
 ### 0.0.1 (2023-10-12)
 * (Mule) initial test release
 
+### **WORK IN PROGRESS**
+* (Mule) initial release
+
 ## License
 MIT License
 
