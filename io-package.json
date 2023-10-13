@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "iopooleco",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "news": {
+      "0.2.1": {
+        "en": "<!--\n\tPlaceholder for the next version (at the beginning of the line):\n\t### **WORK IN PROGRESS**\n-->",
+        "de": "<!--\nPlatzhalter für die nächste Version (am Anfang der Linie):\n# *WORK IN PROGRESS*\n-->",
+        "ru": "<!--\nАкцент для следующей версии (в начале строки):\n# *WORK В ПРОГРЕССЕ*\n-->",
+        "pt": "<!--\nPlaceholder para a próxima versão (no início da linha):\n*TRABALHAR EM FAVOR*\n-->",
+        "nl": "<!--\nPlacehouder voor de volgende versie (in het begin van de lijn)\n♪WORK IN PROGRES ♪\n-->",
+        "fr": "<!--\nPlaceholder for the next version (at the beginning of the line):\n*WORK IN PROGRESS*\n-->",
+        "it": "<!--\nSegnaposto per la prossima versione (all'inizio della linea):\n#\n-->",
+        "es": "<!--\nTitular para la próxima versión (al principio de la línea):\n*WORK IN PROGRESS*\n-->",
+        "pl": "<!--\nPlaceholder for the next version (na początku linii):\nWORK IN PROGRESS* (ANG.)\n-->",
+        "uk": "<!--\nМісцевласника для наступної версії (на початку лінії):\n# *ВОРК В ПРОГРЕСІ*\n-->",
+        "zh-cn": "<!--\n下文本的持有人(线开始):\n行动*\n-->"
+      },
       "0.2.0": {
         "en": "initial release",
         "de": "erstausstrahlung",
