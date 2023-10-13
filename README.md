@@ -17,7 +17,7 @@ Just install this adapter and enter your API key from iopool App.
 The API key can be generated in your iopool App under More/Settings/API Key. 
 
 ## Changelog
-### **WORK IN PROGRESS**
+### 0.2.2 (2023-10-13)
 <!--
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
