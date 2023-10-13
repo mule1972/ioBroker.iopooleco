@@ -21,6 +21,8 @@ The API key can be generated in your iopool App under More/Settings/API Key.
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
 ### 0.2.0 (2023-10-12)
 * (Mule) initial release
 
