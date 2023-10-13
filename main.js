@@ -39,17 +39,22 @@ class Iopooleco extends utils.Adapter {
 				let poolcounter = 0;
 				for (const id of PoolsResponse.data) {
 					await this.CreatePoolIDNotExists(id.id);
-					//only update if measuredAt changed
-					const obj = await this.getStateAsync(id.id+'.latestMeasure.measuredAt');
-					if (obj != null) {
-						if (obj.val != PoolsResponse.data[poolcounter].latestMeasure.measuredAt) {
-							this.log.info(`new measurement => update states`);
-							await this.UpdatePoolID(PoolsResponse.data[poolcounter]);
+					//only update if measurement is valid
+					if (PoolsResponse.data[poolcounter].latestMeasure.isValid) {
+						//only update if measuredAt changed
+						const obj = await this.getStateAsync(id.id+'.latestMeasure.measuredAt');
+						if (obj != null) {
+							if (obj.val != PoolsResponse.data[poolcounter].latestMeasure.measuredAt) {
+								this.log.info(`new measurement from API => update states`);
+								await this.UpdatePoolID(PoolsResponse.data[poolcounter]);
+							} else {
+								this.log.info(`no new measurement from API`);
+							}
 						} else {
-							this.log.info(`no new measurement from API`);
+							this.log.error(`could not get latest measurement timestamp from iobroker objects (pool: ${id.id})`);
 						}
 					} else {
-						this.log.error(`could not get last measurement timestamp: ${id.id+'.latestMeasure.measuredAt'}`);
+						this.log.info(`latest measurement is not valid (pool: ${id.id})`);
 					}
 					poolcounter++;
 				}
