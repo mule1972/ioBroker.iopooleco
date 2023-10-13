@@ -17,11 +17,11 @@ Just install this adapter and enter your API key from iopool App.
 The API key can be generated in your iopool App under More/Settings/API Key. 
 
 ## Changelog
+### **WORK IN PROGRESS**
 <!--
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
 
 ### 0.2.0 (2023-10-12)
 * (Mule) initial release
