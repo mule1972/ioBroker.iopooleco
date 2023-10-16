@@ -14,7 +14,8 @@
         "label": "Temperature-Offset",
         "help": "set temperature offset if meter is inaccurate (optional)",
         "sm": 12,
-        "md": 4
+        "md": 4,
+        "newLine": true
       },
       "orpoffset": {
         "type": "number",
