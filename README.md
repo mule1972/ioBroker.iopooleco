@@ -17,7 +17,7 @@ Just install this adapter and enter your API key from iopool App.
 The API key can be generated in your iopool App under More/Settings/API Key. 
 
 ## Changelog
-### **WORK IN PROGRESS**
+### 0.4.0 (2023-10-16)
 some bugfixes & added offsets for temperature, ORP and pH if meter is inaccurate
 <!--
 	Placeholder for the next version (at the beginning of the line):
@@ -25,7 +25,7 @@ some bugfixes & added offsets for temperature, ORP and pH if meter is inaccurate
 -->
 
 ### 0.3.0 (2023-10-13)
-add error handling for invalid measurements 
+add error handling for invalid measurements
 
 ### 0.2.3 (2023-10-13)
 minor changes to error handling
