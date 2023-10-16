@@ -20,7 +20,7 @@
       "orpoffset": {
         "type": "number",
         "label": "ORP-Offset",
-        "help": "set ORPtemperature offset if meter is inaccurate (optional)",
+        "help": "set ORP offset if meter is inaccurate (optional)",
         "sm": 12,
         "md": 4
       },
