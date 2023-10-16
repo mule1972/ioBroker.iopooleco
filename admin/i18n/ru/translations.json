@@ -1,4 +1,7 @@
 {
     "Options": "Параметры",
-    "API-Key": "API-ключ"
+    "API-Key": "API-ключ",
+    "Temperature-Offset": "Смещение температуры",
+    "ORP-Offset": "ORP-смещение",
+    "pH-Offset": "pH-смещение"
 }

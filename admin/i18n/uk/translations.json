@@ -1,4 +1,7 @@
 {
     "Options": "Опції",
-    "API-Key": "API-ключ"
+    "API-Key": "API-ключ",
+    "Temperature-Offset": "Температурний зсув",
+    "ORP-Offset": "ORP-Зсув",
+    "pH-Offset": "рН-зміщення"
 }

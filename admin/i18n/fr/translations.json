@@ -1,4 +1,7 @@
 {
     "Options": "Possibilités",
-    "API-Key": "Clé API"
+    "API-Key": "Clé API",
+    "Temperature-Offset": "Décalage de température",
+    "ORP-Offset": "Compensation ORP",
+    "pH-Offset": "Compensation pH"
 }

@@ -1,4 +1,7 @@
 {
     "Options": "Opties",
-    "API-Key": "API sleutel"
+    "API-Key": "API sleutel",
+    "Temperature-Offset": "Temperatuur-offset",
+    "ORP-Offset": "ORP-compensatie",
+    "pH-Offset": "pH-compensatie"
 }

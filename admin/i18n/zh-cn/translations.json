@@ -1,4 +1,7 @@
 {
     "Options": "选项",
-    "API-Key": "API密钥"
+    "API-Key": "API密钥",
+    "Temperature-Offset": "温度偏移",
+    "ORP-Offset": "ORP偏移",
+    "pH-Offset": "pH 偏移"
 }

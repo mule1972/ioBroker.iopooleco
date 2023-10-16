@@ -8,6 +8,27 @@
         "help": "API Key from iopool App",
         "sm": 12,
         "md": 4
+      },
+      "temperatureoffset": {
+        "type": "number",
+        "label": "Temperature-Offset",
+        "help": "set temperature offset if meter is inaccurate (optional)",
+        "sm": 12,
+        "md": 4
+      },
+      "orpoffset": {
+        "type": "number",
+        "label": "ORP-Offset",
+        "help": "set ORPtemperature offset if meter is inaccurate (optional)",
+        "sm": 12,
+        "md": 4
+      },
+      "phoffset": {
+        "type": "number",
+        "label": "pH-Offset",
+        "help": "set pH offset if meter is inaccurate (optional)",
+        "sm": 12,
+        "md": 4
       }
    }
 }
