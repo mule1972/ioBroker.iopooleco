@@ -21,9 +21,9 @@ The API key can be generated in your iopool App under More/Settings/API Key.
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.4.1 (2023-10-19)
 change repo URL to https
- 
+
 ### 0.4.0 (2023-10-16)
 some bugfixes & added offsets for temperature, ORP and pH if meter is inaccurate
 
