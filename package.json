@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:mule1972/ioBroker.iopooleco.git"
+    "url": "https://github.com/mule1972/ioBroker.iopooleco"
   },
   "engines": {
     "node": ">= 16"
