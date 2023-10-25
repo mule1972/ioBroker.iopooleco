@@ -18,8 +18,7 @@ The API key can be generated in your iopool App under More/Settings/API Key.
 
 ## Changelog
 ### **WORK IN PROGRESS**
-update readme with link to device manufacturer iopool
-remove API-Key from debug message
+update readme & secure API key & change scheduler & bugfixes
 
 <!--
 	Placeholder for the next version (at the beginning of the line):
