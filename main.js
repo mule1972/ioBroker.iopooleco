@@ -12,18 +12,31 @@ class Iopooleco extends utils.Adapter {
 			...options,
 			name: 'iopooleco',
 		});
-		this.pollInterval = 0;
 		this.devices = [];
-		this.pollTimeout = null;
 		this.unloaded = false;
 		this.on('ready', this.onReady.bind(this));
 		this.on('unload', this.onUnload.bind(this));
 	}
 
+	async sleep(ms) {
+		return /** @type {Promise<void>} */(new Promise((resolve) => {
+			setTimeout(() => {
+				!this.unloaded && resolve();
+			}, ms);
+		}));
+	}
+
+
 	async onReady() {
+		//set measure frequency of ECO devices
+		const ECOmeasurefrequencyminutes = 15;
 		if(this.config.apikey) {
 			this.log.info(`start iopooleco API request`);
-			this.log.debug(`API-Key: ${this.config.apikey}`);
+			//random delay to spread API requests
+			const delay = Math.floor(Math.random() * 3e4);
+			this.log.debug(`random delay by ${delay}ms to better spread API requests`);
+			await this.sleep(delay);
+			//call iopool API
 			this.iopoolAPIClient = axios.create({
 				baseURL: 'https://api.iopool.com/v1/pools',
 				timeout: 1000,
@@ -37,10 +50,13 @@ class Iopooleco extends utils.Adapter {
 				this.setState('info.connection',true,true);
 				this.log.debug(`API-Response: ${JSON.stringify(PoolsResponse.status)}: ${JSON.stringify(PoolsResponse.data)}`);
 				let poolcounter = 0;
-				this.log.debug(`TYPE: ${typeof(this.config.temperatureoffset)}`);
 				for (const id of PoolsResponse.data) {
+					//replace forbidden chars in poolid
+					this.log.debug(`original pooldeviceid: ${PoolsResponse.data[poolcounter].id}`);
+					PoolsResponse.data[poolcounter].id = PoolsResponse.data[poolcounter].id.replace(this.FORBIDDEN_CHARS, '_');
+					this.log.debug(`converted pooldeviceid: ${PoolsResponse.data[poolcounter].id}`);
 					//check if pooldevice has to be created
-					this.log.info(`check if exists pooldevice: ${id.id}`);
+					this.log.debug(`check if exists pooldevice: ${id.id}`);
 					const obj = await this.getObjectAsync(PoolsResponse.data[poolcounter].id);
 					if (obj == null) {
 						this.log.info(`create new pooldevice: ${id.id}`);
@@ -65,10 +81,25 @@ class Iopooleco extends utils.Adapter {
 								this.log.error(`could not get latest measurement timestamp from iobroker objects for pooldevice: ${id.id}`);
 							}
 						} else {
-							this.log.info(`latest measurement is not valid for pooldevice: ${id.id}`);
+							this.log.error(`latest measurement is not valid for pooldevice: ${id.id}`);
 						}
 					}
 					poolcounter++;
+				}
+				//sync cron minutes with measuredAT minutes of first pool device in order to get most current measurements for first pool device
+				const instanceObject = await this.getForeignObjectAsync('system.adapter.' + this.namespace);
+				if (instanceObject) {
+					const currentschedule = instanceObject.common.schedule;
+					const measuredAT_minutes = new Date(PoolsResponse.data[0].latestMeasure.measuredAt).getMinutes();
+					const targetschedule_minutes = (measuredAT_minutes + 1) - (Math.trunc((measuredAT_minutes + 1) / ECOmeasurefrequencyminutes) * ECOmeasurefrequencyminutes);
+					const targetschedule = targetschedule_minutes.toString() + '-59/' + ECOmeasurefrequencyminutes + ' * * * *';
+					this.log.debug('currentschedule: ' + currentschedule);
+					this.log.debug('targetschedule: ' + targetschedule);
+					if (targetschedule != currentschedule) {
+						this.log.info('new schdule: ' + targetschedule);
+						instanceObject.common.schedule = targetschedule;
+						await this.setForeignObjectAsync(instanceObject._id, instanceObject);
+					}
 				}
 			} catch (err) {
 				//connection to API lost
@@ -92,11 +123,11 @@ class Iopooleco extends utils.Adapter {
 		await this.setObjectNotExistsAsync(poolidobject.id + '.title', { type: 'state', common: { name: poolidobject.id + '.title', type: 'string', read: true, write: false, role: 'value', desc: ''}, native: {} });
 		await this.setObjectNotExistsAsync(poolidobject.id + '.mode', { type: 'state', common: { name: poolidobject.id + '.mode', type: 'string', read: true, write: false, role: 'value', desc: '' }, native: {} });
 		await this.setObjectNotExistsAsync(poolidobject.id + '.hasAnActionRequired', { type: 'state', common: { name: poolidobject.id + '.hasAnActionRequired', type: 'boolean', read: true, write: false, role: 'value', desc: '' }, native: {} });
+		await this.setObjectNotExistsAsync(poolidobject.id + '.latestMeasure', { type: 'folder', common: { name: poolidobject.id + '.latestMeasure' }, native: {} });
 		await this.setObjectNotExistsAsync(poolidobject.id + '.latestMeasure.temperature', { type: 'state', common: { name: poolidobject.id + '.latestMeasure.temperature', type: 'number', unit: '\xB0C', read: true, write: false, role: 'value.temperature', desc: '' }, native: {} });
 		await this.setObjectNotExistsAsync(poolidobject.id + '.latestMeasure.ph', { type: 'state', common: { name: poolidobject.id + '.latestMeasure.ph', type: 'number', read: true, write: false, role: 'value', desc: '' }, native: {} });
 		await this.setObjectNotExistsAsync(poolidobject.id + '.latestMeasure.orp', { type: 'state', common: { name: poolidobject.id + '.latestMeasure.orp', type: 'number', unit: 'mV', read: true, write: false, role: 'value', desc: '' }, native: {} });
 		await this.setObjectNotExistsAsync(poolidobject.id + '.latestMeasure.mode', { type: 'state', common: { name: poolidobject.id + '.latestMeasure.mode', type: 'string', read: true, write: false, role: 'value', desc: '' }, native: {} });
-		await this.setObjectNotExistsAsync(poolidobject.id + '.latestMeasure.isValid', { type: 'state', common: { name: poolidobject.id + '.latestMeasure.isValid', type: 'boolean', read: true, write: false, role: 'value', desc: '' }, native: {} });
 		await this.setObjectNotExistsAsync(poolidobject.id + '.latestMeasure.measuredAt', { type: 'state', common: { name: poolidobject.id + '.latestMeasure.measuredAt', type: 'string', read: true, write: false, role: 'value', desc: '' }, native: {} });
 		await this.setObjectNotExistsAsync(poolidobject.id + '.advice.filtrationDuration', { type: 'state', common: { name: poolidobject.id + '.advice.filtrationDuration', type: 'number', read: true, write: false, role: 'value', desc: '' }, native: {} });
 	}
@@ -119,7 +150,6 @@ class Iopooleco extends utils.Adapter {
 			if ('ph' in poolidobject.latestMeasure) {await this.setState(poolidobject.id + '.latestMeasure.ph', (poolidobject.latestMeasure.ph + parseFloat(phoffset)), true); }
 			if ('orp' in poolidobject.latestMeasure) {await this.setState(poolidobject.id + '.latestMeasure.orp', (poolidobject.latestMeasure.orp + parseFloat(orpoffset)), true); }
 			if ('mode' in poolidobject.latestMeasure) {await this.setState(poolidobject.id + '.latestMeasure.mode', poolidobject.latestMeasure.mode, true); }
-			if ('isValid' in poolidobject.latestMeasure) {await this.setState(poolidobject.id + '.latestMeasure.isValid', poolidobject.latestMeasure.isValid, true); }
 			if ('measuredAt' in poolidobject.latestMeasure) {await this.setState(poolidobject.id + '.latestMeasure.measuredAt', poolidobject.latestMeasure.measuredAt, true); }
 		}
 		if ('filtrationDuration' in poolidobject.advice) {await this.setState(poolidobject.id + '.advice.filtrationDuration', poolidobject.advice.filtrationDuration, true); }

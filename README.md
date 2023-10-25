@@ -11,16 +11,21 @@
 **Tests:** ![Test and Release](https://github.com/mule1972/ioBroker.iopooleco/workflows/Test%20and%20Release/badge.svg)
 
 ## iopooleco adapter for ioBroker
-Connect to your pool meter ECO from iopool and receive ORP, PH and temperature via ioBroker every 15 minutes.
+Connect to your pool meter ECO from iopool (https://iopool.com) and receive ORP, PH and temperature via ioBroker every 15 minutes.
 
 Just install this adapter and enter your API key from iopool App.
 The API key can be generated in your iopool App under More/Settings/API Key. 
 
 ## Changelog
+### **WORK IN PROGRESS**
+update readme with link to device manufacturer iopool
+remove API-Key from debug message
+
 <!--
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
 ### 0.4.1 (2023-10-19)
 change repo URL to https
 
