@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "iopooleco",
-    "version": "0.4.1",
+    "version": "0.5.0",
     "news": {
+      "0.5.0": {
+        "en": "update readme & secure API key & change scheduler & bugfixes\n\n<!--\n\tPlaceholder for the next version (at the beginning of the line):\n\t### **WORK IN PROGRESS**\n-->",
+        "de": "update readme & sicher API key & ändern Scheduler & Bugfixes\n\n<!--\nPlatzhalter für die nächste Version (am Anfang der Linie):\n# *WORK IN PROGRESS*\n-->",
+        "ru": "обновление readme & безопасный API ключ & изменение планировщик & багфиксы\n\n<!--\nАкцент для следующей версии (в начале строки):\n# *WORK В ПРОГРЕССЕ*\n-->",
+        "pt": "update readme & secure API key & change scheduler & bugfixes\n\n<!--\nPlaceholder para a próxima versão (no início da linha):\n*TRABALHAR EM FAVOR*\n-->",
+        "nl": "vertaling:\n\n<!--\nPlacehouder voor de volgende versie (in het begin van de lijn)\n♪WORK IN PROGRES ♪\n-->",
+        "fr": "update readme & sécurisé API key & change scheduler & bugfixes\n\n<!--\nPlaceholder for the next version (at the beginning of the line):\n*WORK IN PROGRESS*\n-->",
+        "it": "update readme & secure API key & change scheduler & bugfixes\n\n<!--\nSegnaposto per la prossima versione (all'inizio della linea):\n#\n-->",
+        "es": "actualización readme & seguro API key \" cambio programar \" bugfixes\n\n<!--\nTitular para la próxima versión (al principio de la línea):\n*WORK IN PROGRESS*\n-->",
+        "pl": "adaptacja i zabezpieczenie klucza API i zmiany harmonogramista & bugfixes\n\n<!--\nPlaceholder for the next version (na początku linii):\nWORK IN PROGRESS* (ANG.)\n-->",
+        "uk": "updateme & Secure API ключ & зміна графіка & Виправлення помилок\n\n<!--\nМісцевласника для наступної версії (на початку лінії):\n# *ВОРК В ПРОГРЕСІ*\n-->",
+        "zh-cn": "二. 更新读图和保证普及教育方案的关键和变革时间表\n\n<!--\n下文本的持有人(线开始):\n行动*\n-->"
+      },
       "0.4.1": {
         "en": "change repo URL to https",
         "de": "repo URL auf https ändern",
@@ -80,19 +93,6 @@
         "pl": "<!--\nPlaceholder for the next version (na początku linii):\nWORK IN PROGRESS* (ANG.)\n-->",
         "uk": "<!--\nМісцевласника для наступної версії (на початку лінії):\n# *ВОРК В ПРОГРЕСІ*\n-->",
         "zh-cn": "<!--\n下文本的持有人(线开始):\n行动*\n-->"
-      },
-      "0.2.0": {
-        "en": "initial release",
-        "de": "erstausstrahlung",
-        "ru": "начальный выпуск",
-        "pt": "lançamento inicial",
-        "nl": "niet",
-        "fr": "initial release",
-        "it": "rilascio iniziale",
-        "es": "liberación inicial",
-        "pl": "pierwsze wydanie",
-        "uk": "початковий реліз",
-        "zh-cn": "初步释放"
       }
     },
     "title": "iopool-ECO",
@@ -173,7 +173,6 @@
   "protectedNative": [
     "apikey"
   ],
-
   "objects": [],
   "instanceObjects": [
     {
