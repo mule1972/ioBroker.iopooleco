@@ -17,13 +17,15 @@ Just install this adapter and enter your API key from iopool App.
 The API key can be generated in your iopool App under More/Settings/API Key. 
 
 ## Changelog
-### 0.5.0 (2023-10-25)
-update readme & secure API key & change scheduler & bugfixes
-
+### **WORK IN PROGRESS**
+improve scheduler calculation
 <!--
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+### 0.5.0 (2023-10-25)
+update readme & secure API key & change scheduler & bugfixes
 
 ### 0.4.1 (2023-10-19)
 change repo URL to https

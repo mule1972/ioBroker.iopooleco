@@ -28,6 +28,7 @@ class Iopooleco extends utils.Adapter {
 
 
 	async onReady() {
+		let mostcurrentmeasuredAt = new Date('1970-01-01');
 		//set measure frequency of ECO devices
 		const ECOmeasurefrequencyminutes = 15;
 		if(this.config.apikey) {
@@ -84,21 +85,27 @@ class Iopooleco extends utils.Adapter {
 							this.log.error(`latest measurement is not valid for pooldevice: ${id.id}`);
 						}
 					}
+					//find most current measuredAt of all pooldevices
+					if ((PoolsResponse.data[poolcounter].mode != 'WINTER') && ((new Date(PoolsResponse.data[poolcounter].latestMeasure.measuredAt)) > mostcurrentmeasuredAt)) {
+						mostcurrentmeasuredAt = new Date(PoolsResponse.data[poolcounter].latestMeasure.measuredAt);
+					}
 					poolcounter++;
 				}
-				//sync cron minutes with measuredAT minutes of first pool device in order to get most current measurements for first pool device
-				const instanceObject = await this.getForeignObjectAsync('system.adapter.' + this.namespace);
-				if (instanceObject) {
-					const currentschedule = instanceObject.common.schedule;
-					const measuredAT_minutes = new Date(PoolsResponse.data[0].latestMeasure.measuredAt).getMinutes();
-					const targetschedule_minutes = (measuredAT_minutes + 1) - (Math.trunc((measuredAT_minutes + 1) / ECOmeasurefrequencyminutes) * ECOmeasurefrequencyminutes);
-					const targetschedule = targetschedule_minutes.toString() + '-59/' + ECOmeasurefrequencyminutes + ' * * * *';
-					this.log.debug('currentschedule: ' + currentschedule);
-					this.log.debug('targetschedule: ' + targetschedule);
-					if (targetschedule != currentschedule) {
-						this.log.info('new schdule: ' + targetschedule);
-						instanceObject.common.schedule = targetschedule;
-						await this.setForeignObjectAsync(instanceObject._id, instanceObject);
+				//sync cron minutes with most current measuredAT minutes in order to get most current measurement
+				if (poolcounter > 0) {
+					const instanceObject = await this.getForeignObjectAsync('system.adapter.' + this.namespace);
+					if (instanceObject) {
+						const currentschedule = instanceObject.common.schedule;
+						const mostcurrentmeasuredAT_minutes = new Date(mostcurrentmeasuredAt).getMinutes();
+						const targetschedule_minutes = (mostcurrentmeasuredAT_minutes + 1) - (Math.trunc((mostcurrentmeasuredAT_minutes + 1) / ECOmeasurefrequencyminutes) * ECOmeasurefrequencyminutes);
+						const targetschedule = targetschedule_minutes.toString() + '-59/' + ECOmeasurefrequencyminutes + ' * * * *';
+						this.log.debug('currentschedule: ' + currentschedule);
+						this.log.debug('targetschedule: ' + targetschedule);
+						if (targetschedule != currentschedule) {
+							this.log.info('new schdule: ' + targetschedule);
+							instanceObject.common.schedule = targetschedule;
+							await this.setForeignObjectAsync(instanceObject._id, instanceObject);
+						}
 					}
 				}
 			} catch (err) {
