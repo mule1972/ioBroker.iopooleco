@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "iopooleco",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "news": {
+      "0.5.1": {
+        "en": "improve scheduler calculation\n<!--\n\tPlaceholder for the next version (at the beginning of the line):\n\t### **WORK IN PROGRESS**\n-->",
+        "de": "planerberechnung verbessern\n<!--\nPlatzhalter für die nächste Version (am Anfang der Linie):\n# *WORK IN PROGRESS*\n-->",
+        "ru": "улучшить расчёт графика\n<!--\nАкцент для следующей версии (в начале строки):\n# *WORK В ПРОГРЕССЕ*\n-->",
+        "pt": "melhorar o cálculo do cronômetro\n<!--\nPlaceholder para a próxima versão (no início da linha):\n*TRABALHAR EM FAVOR*\n-->",
+        "nl": "verbeter schema berekeningen\n<!--\nPlacehouder voor de volgende versie (in het begin van de lijn)\n♪WORK IN PROGRES ♪\n-->",
+        "fr": "améliorer le calcul du calendrier\n<!--\nPlaceholder for the next version (at the beginning of the line):\n*WORK IN PROGRESS*\n-->",
+        "it": "migliorare il calcolo del programmatore\n<!--\nSegnaposto per la prossima versione (all'inizio della linea):\n#\n-->",
+        "es": "mejorar el cálculo del cronograma\n<!--\nTitular para la próxima versión (al principio de la línea):\n*WORK IN PROGRESS*\n-->",
+        "pl": "kalkulator\n<!--\nPlaceholder for the next version (na początku linii):\nWORK IN PROGRESS* (ANG.)\n-->",
+        "uk": "поліпшення розрахунку графіка\n<!--\nМісцевласника для наступної версії (на початку лінії):\n# *ВОРК В ПРОГРЕСІ*\n-->",
+        "zh-cn": "改进附表计算\n<!--\n下文本的持有人(线开始):\n行动*\n-->"
+      },
       "0.5.0": {
         "en": "update readme & secure API key & change scheduler & bugfixes\n\n<!--\n\tPlaceholder for the next version (at the beginning of the line):\n\t### **WORK IN PROGRESS**\n-->",
         "de": "update readme & sicher API key & ändern Scheduler & Bugfixes\n\n<!--\nPlatzhalter für die nächste Version (am Anfang der Linie):\n# *WORK IN PROGRESS*\n-->",
@@ -69,19 +82,6 @@
         "zh-cn": "<!--\n下文本的持有人(线开始):\n行动*\n-->"
       },
       "0.2.2": {
-        "en": "<!--\n\tPlaceholder for the next version (at the beginning of the line):\n\t### **WORK IN PROGRESS**\n-->",
-        "de": "<!--\nPlatzhalter für die nächste Version (am Anfang der Linie):\n# *WORK IN PROGRESS*\n-->",
-        "ru": "<!--\nАкцент для следующей версии (в начале строки):\n# *WORK В ПРОГРЕССЕ*\n-->",
-        "pt": "<!--\nPlaceholder para a próxima versão (no início da linha):\n*TRABALHAR EM FAVOR*\n-->",
-        "nl": "<!--\nPlacehouder voor de volgende versie (in het begin van de lijn)\n♪WORK IN PROGRES ♪\n-->",
-        "fr": "<!--\nPlaceholder for the next version (at the beginning of the line):\n*WORK IN PROGRESS*\n-->",
-        "it": "<!--\nSegnaposto per la prossima versione (all'inizio della linea):\n#\n-->",
-        "es": "<!--\nTitular para la próxima versión (al principio de la línea):\n*WORK IN PROGRESS*\n-->",
-        "pl": "<!--\nPlaceholder for the next version (na początku linii):\nWORK IN PROGRESS* (ANG.)\n-->",
-        "uk": "<!--\nМісцевласника для наступної версії (на початку лінії):\n# *ВОРК В ПРОГРЕСІ*\n-->",
-        "zh-cn": "<!--\n下文本的持有人(线开始):\n行动*\n-->"
-      },
-      "0.2.1": {
         "en": "<!--\n\tPlaceholder for the next version (at the beginning of the line):\n\t### **WORK IN PROGRESS**\n-->",
         "de": "<!--\nPlatzhalter für die nächste Version (am Anfang der Linie):\n# *WORK IN PROGRESS*\n-->",
         "ru": "<!--\nАкцент для следующей версии (в начале строки):\n# *WORK В ПРОГРЕССЕ*\n-->",
