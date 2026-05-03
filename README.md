@@ -51,6 +51,8 @@ minor changes to readme
 ### 0.0.1 (2023-10-12)
 * (Mule) initial test release
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 MIT License
 
