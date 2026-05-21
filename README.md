@@ -17,6 +17,10 @@ Just install this adapter and enter your API key from iopool App.
 The API key can be generated in your iopool App under More/Settings/API Key. 
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+- (ioBroker-Bot) Adapter requires js-controller >= 6.0.11 now.
+
 ### 0.5.1 (2023-10-25)
 improve scheduler calculation
 <!--
